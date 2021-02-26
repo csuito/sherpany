@@ -5,18 +5,21 @@ import { MainLayout } from './components/layout/main-layout'
 import { NotFoundPage } from './components/not-found/not-found-page'
 import { SettingsPage } from './components/settings/settings-page'
 import { UsersPage } from './components/users/users-page'
+import { Provider as SettingsProvider } from './context/settings'
 
 function App() {
 	return (
-		<Router>
-			<Switch>
-				<Route exact path='/settings' component={SettingsPage} />
-				<MainLayout>
-					<Route exact path='/' component={UsersPage} />
-				</MainLayout>
-				<Route path='*' component={NotFoundPage} />
-			</Switch>
-		</Router>
+		<SettingsProvider>
+			<Router>
+				<Switch>
+					<Route exact path='/settings' component={SettingsPage} />
+					<MainLayout>
+						<Route exact path='/' component={UsersPage} />
+					</MainLayout>
+					<Route path='*' component={NotFoundPage} />
+				</Switch>
+			</Router>
+		</SettingsProvider>
 	)
 }
 

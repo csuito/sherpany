@@ -1,13 +1,11 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import { SearchBar } from '../search/search-bar'
+import { Header } from './header'
 
 const MainLayout = ({ children }) => {
 	return (
 		<div>
-			<header>
-				<SearchBar />
-			</header>
+			<Header />
 			{children}
 		</div>
 	)

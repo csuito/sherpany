@@ -1,24 +1,20 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
+import { Context as SettingsContext } from '../context/settings'
 import { useAxios } from '../services/client'
 
 const useUsers = () => {
+	const {
+		state: { nationality },
+	} = useContext(SettingsContext)
 	const [users, setUsers] = useState([])
 	const [page, setPage] = useState(1)
 
-	const nat = 'ch,es,fr,gb'
+	const [{ data, loading, error }, refetch] = useAxios({
+		params: { page, nat: nationality, results: 50 },
+	})
 
-	const [{ data, loading, error }, refetch] = useAxios(
-		`?page=${page}&results=50&nat=${nat}`
-	)
-
-	const fetchNextPage = async () => {
-		console.log('Fetching next!')
+	const fetchNextPage = () => {
 		setPage((page) => page + 1)
-		try {
-			await refetch()
-		} catch (err) {
-			return err
-		}
 	}
 
 	const cleanUp = () => {
@@ -34,7 +30,7 @@ const useUsers = () => {
 
 	useEffect(() => {
 		cleanUp()
-	}, [nat])
+	}, [nationality])
 
 	return [
 		{

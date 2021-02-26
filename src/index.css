@@ -25,3 +25,13 @@ code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
 		monospace;
 }
+
+header {
+	background-color: var(--accent-color);
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	padding: 1em 2em;
+	color: var(--text-main-color);
+}

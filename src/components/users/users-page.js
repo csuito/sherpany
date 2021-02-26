@@ -2,7 +2,7 @@ import React from 'react'
 import { useUsers } from '../../hooks/use-users'
 
 const UsersPage = () => {
-	const [{ users, loading, error, refetch }] = useUsers()
+	const [{ users, loading, error, refetch, fetchNextPage }] = useUsers()
 
 	return (
 		<div>
@@ -31,6 +31,7 @@ const UsersPage = () => {
 				) : (
 					<p>There are no users matching your query</p>
 				)}
+				<button onClick={fetchNextPage}>Fetch Next</button>
 			</div>
 		</div>
 	)
