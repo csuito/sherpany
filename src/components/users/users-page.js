@@ -1,16 +1,8 @@
 import React from 'react'
-import { useAxios } from '../../services/client'
+import { useUsers } from '../../hooks/use-users'
 
 const UsersPage = () => {
-	const page = 1
-	const results = 50
-	const nat = 'ch,es,fr,gb'
-
-	const [{ data, loading, error, refetch }] = useAxios(
-		`?page=${page}&results=${results}&nat=${nat}`
-	)
-
-	console.log(data)
+	const [{ users, loading, error, refetch }] = useUsers()
 
 	return (
 		<div>
@@ -28,9 +20,9 @@ const UsersPage = () => {
 			)}
 
 			<div>
-				{data && Array.isArray(data?.results) && data?.results.length >= 1 ? (
-					data.results.map((user) => (
-						<div>
+				{Array.isArray(users) && users.length >= 1 ? (
+					users.map((user, i) => (
+						<div key={`${i}-${user.name.first}-${user.name.last}`}>
 							<p>
 								{user.name.title} {user.name.first} {user.name.last}
 							</p>
