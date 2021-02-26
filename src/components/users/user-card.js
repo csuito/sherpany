@@ -2,17 +2,30 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import './user-card.css'
 
-const UserCard = ({ user }) => {
+const Card = ({ user }) => {
 	return (
 		<div className='card-container'>
-			<p>
-				{user.name.title} {user.name.first} {user.name.last}
-			</p>
+			<div className='card-header'>
+				<img
+					className='thumbnail'
+					src={user.picture.thumbnail}
+					alt='user-thumbnail'
+				/>
+				<div className='name-container'>
+					<p className='name'>
+						{user.name.first} {user.name.last}
+					</p>
+					<p className='username'>@{user.login.username}</p>
+				</div>
+			</div>
+			<div className='card-body'>
+				<p>{user.email}</p>
+			</div>
 		</div>
 	)
 }
 
-UserCard.propTypes = {
+Card.propTypes = {
 	user: PropTypes.shape({
 		cell: PropTypes.string,
 		dob: PropTypes.shape({
@@ -48,6 +61,9 @@ UserCard.propTypes = {
 			last: PropTypes.string.isRequired,
 			title: PropTypes.string.isRequired,
 		}),
+		login: PropTypes.shape({
+			username: PropTypes.string.isRequired,
+		}),
 		nat: PropTypes.string.isRequired,
 		phone: PropTypes.string.isRequired,
 		picture: PropTypes.shape({
@@ -58,4 +74,4 @@ UserCard.propTypes = {
 	}).isRequired,
 }
 
-export { UserCard }
+export const UserCard = React.memo(Card)
