@@ -1,22 +1,22 @@
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import './App.css'
+// Pages
+import { MainLayout } from './components/layout/main-layout'
+import { NotFoundPage } from './components/not-found/not-found-page'
+import { SettingsPage } from './components/settings/settings-page'
+import { UsersPage } from './components/users/users-page'
 
 function App() {
 	return (
-		<div className='App'>
-			<header className='App-header'>
-				<p>
-					Edit <code>src/App.js</code> and save to reload.
-				</p>
-				<a
-					className='App-link'
-					href='https://reactjs.org'
-					target='_blank'
-					rel='noopener noreferrer'
-				>
-					Learn React
-				</a>
-			</header>
-		</div>
+		<Router>
+			<Switch>
+				<Route exact path='/settings' component={SettingsPage} />
+				<MainLayout>
+					<Route exact path='/' component={UsersPage} />
+				</MainLayout>
+				<Route path='*' component={NotFoundPage} />
+			</Switch>
+		</Router>
 	)
 }
 
