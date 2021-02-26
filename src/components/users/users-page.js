@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { Context as UsersContext } from '../../context/users'
 import { useUsers } from '../../hooks/use-users'
 
 const UsersPage = () => {
-	const [{ users, loading, error, refetch, fetchNextPage }] = useUsers()
+	const [{ loading, error, refetch, fetchNextPage }] = useUsers()
+	const {
+		state: { renderUsers: users },
+	} = useContext(UsersContext)
 
 	return (
 		<div>
