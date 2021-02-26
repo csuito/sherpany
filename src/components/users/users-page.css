@@ -1,0 +1,8 @@
+main {
+	margin-top: 5em;
+}
+
+.list-container {
+	display: grid;
+	grid-template-columns: repeat(4, 25%);
+}

@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
+import { UserCard } from './user-card'
 
 const InfiniteScroller = ({ data, fetchNextPage }) => {
 	return (
@@ -15,13 +16,11 @@ const InfiniteScroller = ({ data, fetchNextPage }) => {
 			next={fetchNextPage}
 			scrollThreshold={0.98}
 		>
-			{data.map((user, i) => (
-				<div key={`${i}-${user.name.first}-${user.name.last}`}>
-					<p>
-						{user.name.title} {user.name.first} {user.name.last}
-					</p>
-				</div>
-			))}
+			<div className='list-container'>
+				{data.map((user, i) => (
+					<UserCard key={i} user={user} />
+				))}
+			</div>
 		</InfiniteScroll>
 	)
 }

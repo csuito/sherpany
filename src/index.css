@@ -1,5 +1,5 @@
 :root {
-	--main-color: #000000;
+	--main-color: #131313;
 	--secondary-color: #181818;
 	--accent-color: #0099fe;
 	--text-main-color: #fefefe;
@@ -19,6 +19,7 @@ body {
 		sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	background-color: var(--main-color);
 }
 
 code {
@@ -32,6 +33,9 @@ header {
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
-	padding: 1em 2em;
+	padding: 1em 5em;
 	color: var(--text-main-color);
+	position: fixed;
+	top: 0;
+	width: 100%;
 }

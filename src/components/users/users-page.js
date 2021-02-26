@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { Context as UsersContext } from '../../context/users'
 import { useUsers } from '../../hooks/use-users'
 import { InfiniteScroller } from './infinite-scroll'
+import './users-page.css'
 
 const UsersPage = () => {
 	const [{ loading, error, refetch, fetchNextPage }] = useUsers()
@@ -10,7 +11,7 @@ const UsersPage = () => {
 	} = useContext(UsersContext)
 
 	return (
-		<div>
+		<main>
 			{error && (
 				<div>
 					<p>There was an error loading users data</p>
@@ -29,7 +30,7 @@ const UsersPage = () => {
 					<p>Loading...</p>
 				</div>
 			)}
-		</div>
+		</main>
 	)
 }
 

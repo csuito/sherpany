@@ -15,8 +15,8 @@ function App() {
 			<UsersProvider>
 				<Router>
 					<Switch>
-						<Route exact path='/settings' component={SettingsPage} />
 						<MainLayout>
+							<Route exact path='/settings' component={SettingsPage} />
 							<Route exact path='/' component={UsersPage} />
 						</MainLayout>
 						<Route path='*' component={NotFoundPage} />

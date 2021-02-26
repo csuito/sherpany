@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import { Header } from './header'
+import './main-layout.css'
 
 const MainLayout = ({ children }) => {
 	return (
-		<div>
+		<div class='layout-container'>
 			<Header />
 			{children}
 		</div>

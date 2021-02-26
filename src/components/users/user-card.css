@@ -1,0 +1,8 @@
+.card-container {
+	background-color: var(--secondary-color);
+	color: var(--text-main-color);
+	border: 1px solid var(--accent-color);
+	border-radius: 2px;
+	padding: 2em;
+	margin: 2em;
+}
