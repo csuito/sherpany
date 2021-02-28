@@ -1,13 +1,19 @@
 import React from 'react'
+import { FaAddressBook } from 'react-icons/fa'
+import { IoSettingsOutline } from 'react-icons/io5'
 import { Link } from 'react-router-dom'
 import { SearchBar } from '../search/search-bar'
 
 const Header = () => {
 	return (
 		<header>
-			<h1>Address Book</h1>
+			<Link to='/'>
+				<FaAddressBook color='fefefe' size={28} />
+			</Link>
 			<SearchBar />
-			<Link to='/settings'>Settings</Link>
+			<Link to='/settings'>
+				<IoSettingsOutline color='fefefe' size={28} />
+			</Link>
 		</header>
 	)
 }

@@ -1,33 +1,48 @@
 import PropTypes from 'prop-types'
-import React from 'react'
-import InfiniteScroll from 'react-infinite-scroll-component'
+import React, { useContext } from 'react'
+import useInfiniteScroll from 'react-infinite-scroll-hook'
+import { Context as UsersContext } from '../../context/users'
 import { UserCard } from './user-card'
 
-const InfiniteScroller = ({ data, fetchNextPage }) => {
+const InfiniteScroller = ({ data, loading, fetchNextPage }) => {
+	const {
+		state: { searching },
+	} = useContext(UsersContext)
+
+	const infiniteRef = useInfiniteScroll({
+		loading,
+		hasNextPage: data.length < 1000,
+		onLoadMore: fetchNextPage,
+	})
+
 	return (
-		<InfiniteScroll
-			dataLength={data.length}
-			endMessage={
-				<p style={{ textAlign: 'center' }}>
-					<b>Yay! You have seen it all</b>
+		<div>
+			{searching ? (
+				<div className='list-container'>
+					{data.map((user, i) => (
+						<UserCard key={i} user={user} />
+					))}
+				</div>
+			) : (
+				<div className='list-container' ref={infiniteRef}>
+					{data.map((user, i) => (
+						<UserCard key={i} user={user} />
+					))}
+				</div>
+			)}
+			{data.length === 1000 && (
+				<p>
+					<b>End of users catalog.</b>
 				</p>
-			}
-			hasMore={data.length < 1000}
-			next={fetchNextPage}
-			scrollThreshold={0.98}
-		>
-			<div className='list-container'>
-				{data.map((user, i) => (
-					<UserCard key={i} user={user} />
-				))}
-			</div>
-		</InfiniteScroll>
+			)}
+		</div>
 	)
 }
 
 InfiniteScroller.propTypes = {
 	data: PropTypes.array.isRequired,
 	fetchNextPage: PropTypes.func.isRequired,
+	loading: PropTypes.bool.isRequired,
 }
 
 export { InfiniteScroller }

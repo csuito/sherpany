@@ -5,10 +5,12 @@ import { InfiniteScroller } from './infinite-scroll'
 import './users-page.css'
 
 const UsersPage = () => {
-	const [{ loading, error, refetch, fetchNextPage }] = useUsers()
 	const {
 		state: { renderUsers: users },
 	} = useContext(UsersContext)
+
+	const skipRequest = users.length >= 50
+	const [{ loading, error }, refetch, fetchNextPage] = useUsers(skipRequest)
 
 	return (
 		<main>
@@ -20,7 +22,11 @@ const UsersPage = () => {
 			)}
 
 			{Array.isArray(users) && users.length >= 1 ? (
-				<InfiniteScroller data={users} fetchNextPage={fetchNextPage} />
+				<InfiniteScroller
+					data={users}
+					fetchNextPage={fetchNextPage}
+					loading={loading}
+				/>
 			) : (
 				<p>There are no users matching your search</p>
 			)}

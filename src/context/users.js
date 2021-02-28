@@ -3,13 +3,12 @@ import { generator as createContext } from './generator'
 const reducer = (state, action) => {
 	switch (action.type) {
 		case 'search': {
-			const searchTerm = action.payload
 			const renderUsers = [...state.users].filter((user) =>
 				`${user.name.first} ${user.name.last}`
 					.toLowerCase()
-					.includes(searchTerm.toLowerCase())
+					.includes(action.payload.toLowerCase())
 			)
-			return { ...state, renderUsers }
+			return { ...state, renderUsers, searching: !!action.payload }
 		}
 		case 'setUsers': {
 			const users = [...action.payload]
@@ -32,8 +31,11 @@ const actions = {
 const initialState = {
 	users: [],
 	renderUsers: [],
+	searching: false,
 }
 
-const { Context, Provider } = createContext(reducer, actions, initialState)
-
-export { Context, Provider }
+export const { Context, Provider } = createContext(
+	reducer,
+	actions,
+	initialState
+)

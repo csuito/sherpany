@@ -2,49 +2,50 @@ import { useContext, useEffect, useState } from 'react'
 import { Context as SettingsContext } from '../context/settings'
 import { Context as UsersContext } from '../context/users'
 import { useAxios } from '../services/client'
+import { checkArray } from '../util'
 
-const useUsers = () => {
+const useUsers = (skipRequest) => {
 	const {
-		state: { nationality },
+		state: { nationality: nat },
 	} = useContext(SettingsContext)
 
 	const {
-		state: { users },
+		state: { users, searching },
 		setUsers,
 	} = useContext(UsersContext)
 
-	const [page, setPage] = useState(1)
+	const [page, setNextPage] = useState(1)
+	const [fetchError, setFetchError] = useState(null)
+	const [{ data, loading, error }, refetch] = useAxios(
+		{
+			params: { page, nat, results: 50 },
+		},
+		{ manual: skipRequest }
+	)
 
-	const [{ data, loading, error }, refetch] = useAxios({
-		params: { page, nat: nationality, results: 50 },
-	})
-
-	const fetchNextPage = () => {
-		setPage((page) => page + 1)
-	}
-
-	const cleanUp = () => {
-		setPage(() => 1)
-		setUsers([])
-	}
-
-	useEffect(() => {
-		if (data && Array.isArray(data?.results) && data?.results.length >= 1) {
-			setUsers([...users, ...data.results])
+	const fetchNextPage = async () => {
+		if (searching) return
+		try {
+			await refetch()
+		} catch (err) {
+			setFetchError(err)
 		}
-	}, [data]) /* eslint-disable-line */
+	}
 
 	useEffect(() => {
-		cleanUp()
-	}, [nationality]) /* eslint-disable-line */
+		if (checkArray(data?.results) && !searching) {
+			setUsers([...users, ...data.results])
+			setNextPage((page) => page + 1)
+		}
+	}, [data, searching]) /* eslint-disable-line */
 
 	return [
 		{
 			loading,
-			error,
-			refetch,
-			fetchNextPage,
+			error: error || fetchError,
 		},
+		refetch,
+		fetchNextPage,
 	]
 }
 

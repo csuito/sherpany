@@ -1,25 +1,30 @@
 import PropTypes from 'prop-types'
 import React from 'react'
+import { IoInformationCircle, IoMail } from 'react-icons/io5'
 import './user-card.css'
 
 const Card = ({ user }) => {
 	return (
 		<div className='card-container'>
 			<div className='card-header'>
-				<img
-					className='thumbnail'
-					src={user.picture.thumbnail}
-					alt='user-thumbnail'
-				/>
-				<div className='name-container'>
-					<p className='name'>
-						{user.name.first} {user.name.last}
-					</p>
-					<p className='username'>@{user.login.username}</p>
+				<div className='basic-data-container'>
+					<img
+						className='thumbnail'
+						src={user.picture.thumbnail}
+						alt='user-thumbnail'
+					/>
+					<div className='name-container'>
+						<p className='name'>
+							{user.name.first} {user.name.last}
+						</p>
+						<p className='username'>@{user.login.username}</p>
+					</div>
 				</div>
+				<IoInformationCircle color='#0099fe' size='22' />
 			</div>
-			<div className='card-body'>
-				<p>{user.email}</p>
+			<div className='basic-data-container'>
+				<IoMail size='16' color='#a0a0a0' />
+				<p className='email'>{user.email}</p>
 			</div>
 		</div>
 	)

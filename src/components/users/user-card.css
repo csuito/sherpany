@@ -10,8 +10,14 @@
 .card-header {
 	display: flex;
 	align-items: center;
-	justify-content: flex-start;
+	justify-content: space-between;
 	padding-bottom: 1em;
+}
+
+.basic-data-container {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
 }
 
 .thumbnail {
@@ -29,4 +35,10 @@
 .username {
 	font-size: 0.8em;
 	color: var(--accent-color);
+}
+
+.email {
+	font-size: 0.9em;
+	color: var(--text-inactive-color);
+	margin-left: 0.25em;
 }

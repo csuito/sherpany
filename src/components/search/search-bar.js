@@ -1,13 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Context as UsersContext } from '../../context/users'
 
 const SearchBar = () => {
 	const { search } = useContext(UsersContext)
 	const [searchTerm, setSearchTerm] = useState('')
 
-	useEffect(() => {
-		search(searchTerm)
-	}, [searchTerm]) /* eslint-disable-line */
+	const handleChange = ({ target: { value } }) => {
+		setSearchTerm(value)
+		search(value)
+	}
 
 	return (
 		<div>
@@ -15,7 +16,7 @@ const SearchBar = () => {
 				type='text'
 				name='search'
 				value={searchTerm}
-				onChange={(e) => setSearchTerm(e.target.value)}
+				onChange={handleChange}
 			/>
 		</div>
 	)
