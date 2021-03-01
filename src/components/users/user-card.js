@@ -72,13 +72,13 @@ Card.propTypes = {
 		name: PropTypes.shape({
 			first: PropTypes.string.isRequired,
 			last: PropTypes.string.isRequired,
-			title: PropTypes.string.isRequired,
+			title: PropTypes.string,
 		}),
 		login: PropTypes.shape({
 			username: PropTypes.string.isRequired,
 		}),
-		nat: PropTypes.string.isRequired,
-		phone: PropTypes.string.isRequired,
+		nat: PropTypes.string,
+		phone: PropTypes.string,
 		picture: PropTypes.shape({
 			large: PropTypes.string,
 			medium: PropTypes.string,
