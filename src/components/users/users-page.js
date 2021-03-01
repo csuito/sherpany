@@ -1,12 +1,14 @@
 import React, { useContext } from 'react'
 import { Context as UsersContext } from '../../context/users'
 import { useUsers } from '../../hooks/use-users'
+import { checkArray } from '../../util'
 import { InfiniteScroller } from './infinite-scroll'
+import { UserModal } from './modal'
 import './users-page.css'
 
 const UsersPage = () => {
 	const {
-		state: { renderUsers: users },
+		state: { renderUsers: users, searching, showModal },
 	} = useContext(UsersContext)
 
 	const skipRequest = users.length >= 50
@@ -21,14 +23,16 @@ const UsersPage = () => {
 				</div>
 			)}
 
-			{Array.isArray(users) && users.length >= 1 ? (
+			{showModal && <UserModal />}
+
+			{checkArray(users) ? (
 				<InfiniteScroller
 					data={users}
 					fetchNextPage={fetchNextPage}
 					loading={loading}
 				/>
 			) : (
-				<p>There are no users matching your search</p>
+				searching && <p>There are no users matching your search</p>
 			)}
 
 			{loading && (

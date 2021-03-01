@@ -9,7 +9,7 @@
 	background-color: var(--secondary-color);
 	border-radius: 2px;
 	padding: 2.5em 5em;
-	margin: 1.5em;
+	margin: 1.5em 0;
 	text-align: center;
 	border: 1px solid var(--accent-color);
 }

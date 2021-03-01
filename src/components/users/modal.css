@@ -1,0 +1,73 @@
+.modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 100vw;
+	background-color: rgba(0, 0, 0, 0.7);
+	padding: 10% 25%;
+}
+
+.modal-data-container {
+	background-color: var(--secondary-color);
+	border-radius: 2px;
+	padding: 1em;
+	padding-bottom: 0.25em;
+}
+
+.modal-header {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+}
+
+.close-btn:hover {
+	cursor: pointer;
+}
+
+.modal-body > .basic-data-container {
+	margin-bottom: 1.5em;
+}
+
+.thumbnail-large {
+	border-radius: 50%;
+	overflow: hidden;
+	width: 65px;
+	height: 65px;
+}
+
+.name-container {
+	margin-left: 0.5em;
+	color: var(--text-main-color);
+}
+
+.name-large {
+	font-size: 1.25em;
+}
+
+.username-large {
+	font-size: 1em;
+}
+
+.email-large {
+	font-size: 1em;
+}
+
+.text-margin {
+	margin-left: 0.25em;
+}
+
+.text {
+	color: var(--text-inactive-color);
+}
+
+.data-title {
+	font-size: 1.25em;
+	font-weight: bold;
+	color: var(--accent-color);
+	margin-left: 0.25em;
+}
+
+.contact-info {
+	margin-top: 1.5em;
+}

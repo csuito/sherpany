@@ -1,9 +1,12 @@
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { useContext } from 'react'
 import { IoInformationCircle, IoMail } from 'react-icons/io5'
+import { Context as UsersContext } from '../../context/users'
 import './user-card.css'
 
 const Card = ({ user }) => {
+	const { toggleModal } = useContext(UsersContext)
+
 	return (
 		<div className='card-container'>
 			<div className='card-header'>
@@ -20,7 +23,12 @@ const Card = ({ user }) => {
 						<p className='username'>@{user.login.username}</p>
 					</div>
 				</div>
-				<IoInformationCircle color='#0099fe' size='22' />
+				<IoInformationCircle
+					color='#0099fe'
+					size='22'
+					onClick={() => toggleModal(user)}
+					className='btn'
+				/>
 			</div>
 			<div className='basic-data-container'>
 				<IoMail size='16' color='#a0a0a0' />

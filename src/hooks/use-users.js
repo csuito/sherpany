@@ -12,7 +12,7 @@ const useUsers = (skipRequest) => {
 	} = useContext(SettingsContext)
 
 	const {
-		state: { users, searching },
+		state: { users, searching, showModal },
 		setUsers,
 	} = useContext(UsersContext)
 
@@ -26,7 +26,7 @@ const useUsers = (skipRequest) => {
 	)
 
 	const fetchNextPage = async () => {
-		if (searching) return
+		if (searching || showModal) return
 		try {
 			await refetch()
 		} catch (err) {
@@ -35,11 +35,11 @@ const useUsers = (skipRequest) => {
 	}
 
 	useEffect(() => {
-		if (checkArray(data?.results) && !searching) {
+		if (checkArray(data?.results) && !searching && !showModal) {
 			setUsers([...users, ...data.results])
 			setNextPage((page) => page + 1)
 		}
-	}, [data, searching]) /* eslint-disable-line */
+	}, [data, searching, showModal]) /* eslint-disable-line */
 
 	return [
 		{
