@@ -8,6 +8,7 @@
 .settings-container > h1 {
 	color: var(--accent-color);
 	margin-bottom: 1em;
+	text-align: left;
 }
 
 .settings-container > p {

@@ -29,7 +29,12 @@ const SettingsPage = () => {
 		<div className='settings-container'>
 			<h1>Settings</h1>
 			<p>Select users nationality</p>
-			<Select value={nationality} onChange={handleSelect} options={options} />
+			<Select
+				id='select'
+				value={nationality}
+				onChange={handleSelect}
+				options={options}
+			/>
 		</div>
 	)
 }

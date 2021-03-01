@@ -5,9 +5,9 @@ import { Link, useLocation } from 'react-router-dom'
 import { SearchBar } from '../search/search-bar'
 import './header.css'
 
-const Header = (props) => {
+const Header = () => {
 	const location = useLocation()
-	const showSearchBar = location.pathname === '/'
+	const showSearchBar = location?.pathname === '/' || false
 
 	return (
 		<header>

@@ -16,10 +16,13 @@ function App() {
 				<Router>
 					<Switch>
 						<MainLayout>
-							<Route exact path='/settings' component={SettingsPage} />
-							<Route exact path='/' component={UsersPage} />
+							<Switch>
+								<Route exact path='/' component={UsersPage} />
+								<Route exact path='/settings' component={SettingsPage} />
+								<Route exact path='*' component={NotFoundPage} />
+							</Switch>
 						</MainLayout>
-						<Route path='*' component={NotFoundPage} />
+						<Route exact path='*' component={NotFoundPage} />
 					</Switch>
 				</Router>
 			</UsersProvider>
