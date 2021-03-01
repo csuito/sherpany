@@ -17,11 +17,12 @@ const SettingsPage = () => {
 		state: { nationality },
 		setNationality,
 	} = useContext(SettingsContext)
-	const { setUsers } = useContext(UsersContext)
+	const { setUsers, setPage } = useContext(UsersContext)
 
 	const handleSelect = ({ label, value }) => {
 		setNationality({ label, value })
 		setUsers([])
+		setPage(1)
 	}
 
 	return (

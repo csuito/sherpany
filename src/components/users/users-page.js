@@ -10,9 +10,7 @@ const UsersPage = () => {
 	const {
 		state: { renderUsers: users, searching, showModal },
 	} = useContext(UsersContext)
-
-	const skipRequest = users.length >= 50
-	const [{ loading, error }, refetch, fetchNextPage] = useUsers(skipRequest)
+	const [{ loading, error }, refetch, fetchNextPage] = useUsers()
 
 	return (
 		<div>

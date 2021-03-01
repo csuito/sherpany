@@ -4,7 +4,7 @@ import { Context as UsersContext } from '../context/users'
 import { useAxios } from '../services/client'
 import { checkArray } from '../util'
 
-const useUsers = (skipRequest) => {
+const useUsers = () => {
 	const {
 		state: {
 			nationality: { value: nat },
@@ -12,11 +12,12 @@ const useUsers = (skipRequest) => {
 	} = useContext(SettingsContext)
 
 	const {
-		state: { users, searching, showModal },
+		state: { users, searching, showModal, page },
 		setUsers,
+		setPage,
 	} = useContext(UsersContext)
 
-	const [page, setNextPage] = useState(1)
+	const skipRequest = users.length >= 50
 	const [fetchError, setFetchError] = useState(null)
 	const [{ data, loading, error }, refetch] = useAxios(
 		{
@@ -37,7 +38,7 @@ const useUsers = (skipRequest) => {
 	useEffect(() => {
 		if (checkArray(data?.results) && !searching && !showModal) {
 			setUsers([...users, ...data.results])
-			setNextPage((page) => page + 1)
+			setPage(page + 1)
 		}
 	}, [data, searching, showModal]) /* eslint-disable-line */
 

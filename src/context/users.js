@@ -14,6 +14,9 @@ const reducer = (state, action) => {
 			const users = [...action.payload]
 			return { ...state, users, renderUsers: [...users] }
 		}
+		case 'setPage': {
+			return { ...state, page: action.payload }
+		}
 		case 'toggleModal': {
 			const showUser = action.payload || {}
 			const showModal = !state.showModal
@@ -31,6 +34,9 @@ const actions = {
 	setUsers: (dispatch) => (payload) => {
 		dispatch({ type: 'setUsers', payload })
 	},
+	setPage: (dispatch) => (payload) => {
+		dispatch({ type: 'setPage', payload })
+	},
 	toggleModal: (dispatch) => (payload) => {
 		dispatch({ type: 'toggleModal', payload })
 	},
@@ -42,6 +48,7 @@ const initialState = {
 	searching: false,
 	showModal: false,
 	showUser: {},
+	page: 1,
 }
 
 export const { Context, Provider } = createContext(

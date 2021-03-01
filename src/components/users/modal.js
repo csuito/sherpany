@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import React, { useContext } from 'react'
 import { FaPhoneAlt } from 'react-icons/fa'
 import {
@@ -78,10 +77,6 @@ const UserModal = () => {
 			</div>
 		</div>
 	)
-}
-
-UserModal.propTypes = {
-	user: PropTypes.shape({}),
 }
 
 export { UserModal }
