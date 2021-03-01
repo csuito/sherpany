@@ -1,10 +1,8 @@
 # Sherpany - Demo Address Book App
 
+To run the application run `yarn install`, followed by `yarn start`.
+
 ---
-
-## Available Scripts
-
-In the project directory, you can run:
 
 ### `yarn start`
 
