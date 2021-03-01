@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import ReactLoading from 'react-loading'
 import { Context as UsersContext } from '../../context/users'
 import { useUsers } from '../../hooks/use-users'
 import { checkArray } from '../../util'
@@ -34,8 +35,13 @@ const UsersPage = () => {
 			)}
 
 			{loading && (
-				<div>
-					<p>Loading...</p>
+				<div className='loader-container'>
+					<ReactLoading
+						type='cubes'
+						color='#0099fe'
+						height='100px'
+						width='100px'
+					/>
 				</div>
 			)}
 		</div>

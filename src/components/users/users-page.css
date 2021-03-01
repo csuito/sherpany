@@ -18,3 +18,9 @@
 	font-size: 2em;
 	color: var(--accent-color);
 }
+
+.loader-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
