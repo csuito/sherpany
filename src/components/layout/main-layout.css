@@ -1,5 +1,5 @@
 main {
-	padding: 6em 10em 0 10em;
+	padding: 6em 10em 5em 10em;
 }
 
 .layout-container {
@@ -8,12 +8,12 @@ main {
 
 @media only screen and (max-width: 1200px) {
 	main {
-		padding: 6em 5em 0 5em;
+		padding: 6em 5em 5em 5em;
 	}
 }
 
 @media only screen and (max-width: 667px) {
 	main {
-		padding: 6em 1.5em 0 1.5em;
+		padding: 6em 1.5em 5em 1.5em;
 	}
 }
