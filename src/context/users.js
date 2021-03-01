@@ -22,6 +22,10 @@ const reducer = (state, action) => {
 			const showModal = !state.showModal
 			return { ...state, showUser, showModal }
 		}
+		case 'setNationality': {
+			const nationality = { ...action.payload }
+			return { ...state, nationality }
+		}
 		default:
 			return { ...state }
 	}
@@ -40,6 +44,10 @@ const actions = {
 	toggleModal: (dispatch) => (payload) => {
 		dispatch({ type: 'toggleModal', payload })
 	},
+	setNationality: (dispatch) => (payload) => {
+		localStorage.setItem('nationality', JSON.stringify(payload))
+		dispatch({ type: 'setNationality', payload })
+	},
 }
 
 const initialState = {
@@ -49,10 +57,18 @@ const initialState = {
 	showModal: false,
 	showUser: {},
 	page: 1,
+	nationality: { label: 'All', value: 'ch,es,fr,gb' },
 }
+
+const getInitialState = () => ({
+	...initialState,
+	nationality:
+		JSON.parse(localStorage.getItem('nationality')) || initialState.nationality,
+})
 
 export const { Context, Provider } = createContext(
 	reducer,
 	actions,
-	initialState
+	initialState,
+	getInitialState
 )

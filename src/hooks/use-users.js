@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from 'react'
-import { Context as SettingsContext } from '../context/settings'
 import { Context as UsersContext } from '../context/users'
 import { useAxios } from '../services/client'
 import { checkArray } from '../util'
@@ -7,12 +6,12 @@ import { checkArray } from '../util'
 const useUsers = () => {
 	const {
 		state: {
+			users,
+			searching,
+			showModal,
+			page,
 			nationality: { value: nat },
 		},
-	} = useContext(SettingsContext)
-
-	const {
-		state: { users, searching, showModal, page },
 		setUsers,
 		setPage,
 	} = useContext(UsersContext)

@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import Select from 'react-select'
-import { Context as SettingsContext } from '../../context/settings'
 import { Context as UsersContext } from '../../context/users'
 import './settings-page.css'
 
@@ -16,8 +15,9 @@ const SettingsPage = () => {
 	const {
 		state: { nationality },
 		setNationality,
-	} = useContext(SettingsContext)
-	const { setUsers, setPage } = useContext(UsersContext)
+		setUsers,
+		setPage,
+	} = useContext(UsersContext)
 
 	const handleSelect = ({ label, value }) => {
 		setNationality({ label, value })
