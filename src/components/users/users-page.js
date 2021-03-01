@@ -31,7 +31,13 @@ const UsersPage = () => {
 					loading={loading}
 				/>
 			) : (
-				searching && <p>There are no users matching your search</p>
+				searching && (
+					<div className='list-end-container'>
+						<p className='list-end-text no-matches'>
+							There are no users matching your search
+						</p>
+					</div>
+				)
 			)}
 
 			{loading && (

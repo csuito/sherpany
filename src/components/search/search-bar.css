@@ -45,3 +45,15 @@
 .search-bar input:-moz-placeholder {
 	color: rgba(255, 255, 255, 0.8);
 }
+
+@media only screen and (max-width: 1200px) {
+	.search-bar {
+		width: 65%;
+	}
+}
+
+@media only screen and (max-width: 667px) {
+	.search-bar {
+		width: 75%;
+	}
+}
