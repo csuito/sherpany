@@ -1,0 +1,12 @@
+header {
+	background-color: var(--accent-color);
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	padding: 1em 2.5em;
+	color: var(--text-main-color);
+	position: fixed;
+	top: 0;
+	width: 100%;
+}

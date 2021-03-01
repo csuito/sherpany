@@ -13,7 +13,7 @@ const UsersPage = () => {
 	const [{ loading, error }, refetch, fetchNextPage] = useUsers(skipRequest)
 
 	return (
-		<main>
+		<div>
 			{error && (
 				<div>
 					<p>There was an error loading users data</p>
@@ -36,7 +36,7 @@ const UsersPage = () => {
 					<p>Loading...</p>
 				</div>
 			)}
-		</main>
+		</div>
 	)
 }
 

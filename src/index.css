@@ -27,19 +27,6 @@ code {
 		monospace;
 }
 
-header {
-	background-color: var(--accent-color);
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: space-between;
-	padding: 1em 5em;
-	color: var(--text-main-color);
-	position: fixed;
-	top: 0;
-	width: 100%;
-}
-
 a {
 	text-decoration: none;
 	color: inherit;

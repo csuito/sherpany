@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { Context as UsersContext } from '../../context/users'
+import './search-bar.css'
 
 const SearchBar = () => {
 	const { search } = useContext(UsersContext)
@@ -11,12 +12,14 @@ const SearchBar = () => {
 	}
 
 	return (
-		<div>
+		<div className='search-bar'>
 			<input
+				id='search'
 				type='text'
 				name='search'
 				value={searchTerm}
 				onChange={handleChange}
+				placeholder='Search a user by name'
 			/>
 		</div>
 	)

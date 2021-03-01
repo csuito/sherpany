@@ -1,0 +1,18 @@
+.settings-container {
+	margin: 0 1em;
+	border: 1px solid var(--accent-color);
+	border-radius: 2px;
+	background-color: var(--secondary-color);
+	padding: 2.5em;
+}
+
+.settings-container > h1 {
+	color: var(--accent-color);
+	margin-bottom: 1em;
+}
+
+.settings-container > p {
+	color: var(--text-main-color);
+	margin-bottom: 1.5em;
+	font-size: 1.2em;
+}

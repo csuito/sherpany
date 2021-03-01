@@ -3,6 +3,7 @@ import { FaAddressBook } from 'react-icons/fa'
 import { IoSettingsOutline } from 'react-icons/io5'
 import { Link } from 'react-router-dom'
 import { SearchBar } from '../search/search-bar'
+import './header.css'
 
 const Header = () => {
 	return (

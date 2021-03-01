@@ -6,7 +6,9 @@ import { checkArray } from '../util'
 
 const useUsers = (skipRequest) => {
 	const {
-		state: { nationality: nat },
+		state: {
+			nationality: { value: nat },
+		},
 	} = useContext(SettingsContext)
 
 	const {

@@ -31,9 +31,9 @@ const InfiniteScroller = ({ data, loading, fetchNextPage }) => {
 				</div>
 			)}
 			{data.length === 1000 && (
-				<p>
-					<b>End of users catalog.</b>
-				</p>
+				<div className='list-end-container'>
+					<p className='list-end-text'>End of users catalog</p>
+				</div>
 			)}
 		</div>
 	)

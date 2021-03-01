@@ -3,7 +3,7 @@ import { generator as createContext } from './generator'
 const reducer = (state, action) => {
 	switch (action.type) {
 		case 'setNationality': {
-			const newState = { nationality: action.payload }
+			const newState = { nationality: { ...action.payload } }
 			return { ...newState }
 		}
 		default:
@@ -13,19 +13,20 @@ const reducer = (state, action) => {
 
 const actions = {
 	setNationality: (dispatch) => (payload) => {
-		localStorage.setItem('nationality', payload)
+		localStorage.setItem('nationality', JSON.stringify(payload))
 		dispatch({ type: 'setNationality', payload })
 	},
 }
 
 const initialState = {
-	nationality: 'ch,es,fr,gb',
+	nationality: { label: 'All', value: 'ch,es,fr,gb' },
 }
 
 const getInitialState = () => {
 	return {
 		nationality:
-			localStorage.getItem('nationality') || initialState.nationality,
+			JSON.parse(localStorage.getItem('nationality')) ||
+			initialState.nationality,
 	}
 }
 

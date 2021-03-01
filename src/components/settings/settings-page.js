@@ -1,13 +1,15 @@
 import React, { useContext } from 'react'
+import Select from 'react-select'
 import { Context as SettingsContext } from '../../context/settings'
 import { Context as UsersContext } from '../../context/users'
+import './settings-page.css'
 
-const nationalityOptions = [
-	{ name: 'All', value: 'ch,es,fr,gb' },
-	{ name: 'Swiss', value: 'ch' },
-	{ name: 'Spanish', value: 'es' },
-	{ name: 'French', value: 'fr' },
-	{ name: 'British', value: 'gb' },
+const options = [
+	{ label: 'All', value: 'ch,es,fr,gb' },
+	{ label: 'Swiss', value: 'ch' },
+	{ label: 'Spanish', value: 'es' },
+	{ label: 'French', value: 'fr' },
+	{ label: 'British', value: 'gb' },
 ]
 
 const SettingsPage = () => {
@@ -17,21 +19,16 @@ const SettingsPage = () => {
 	} = useContext(SettingsContext)
 	const { setUsers } = useContext(UsersContext)
 
-	const handleSelect = (e) => {
-		setNationality(e.target.value)
+	const handleSelect = ({ label, value }) => {
+		setNationality({ label, value })
 		setUsers([])
 	}
 
 	return (
-		<div>
+		<div className='settings-container'>
 			<h1>Settings</h1>
-			<select value={nationality} onChange={handleSelect}>
-				{nationalityOptions.map((nat, i) => (
-					<option key={nat.value} value={nat.value}>
-						{nat.name}
-					</option>
-				))}
-			</select>
+			<p>Select users nationality</p>
+			<Select value={nationality} onChange={handleSelect} options={options} />
 		</div>
 	)
 }
