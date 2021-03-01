@@ -50,7 +50,7 @@ Card.propTypes = {
 				longitude: PropTypes.string,
 			}),
 			country: PropTypes.string,
-			postcode: PropTypes.number,
+			postcode: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 			state: PropTypes.string,
 			street: PropTypes.shape({
 				number: PropTypes.number,
