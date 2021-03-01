@@ -1,12 +1,13 @@
+import { getFullName, normalize } from '../util/strings'
 import { generator as createContext } from './generator'
 
 const reducer = (state, action) => {
 	switch (action.type) {
 		case 'search': {
 			const renderUsers = [...state.users].filter((user) =>
-				`${user.name.first} ${user.name.last}`
+				normalize(getFullName(user.name))
 					.toLowerCase()
-					.includes(action.payload.toLowerCase())
+					.includes(normalize(action.payload).toLowerCase())
 			)
 			return { ...state, renderUsers, searching: !!action.payload }
 		}

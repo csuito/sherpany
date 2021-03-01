@@ -8,6 +8,7 @@ import {
 	IoPin,
 } from 'react-icons/io5'
 import { Context as UsersContext } from '../../context/users'
+import { getFullName } from '../../util'
 import './modal.css'
 
 const UserModal = () => {
@@ -16,7 +17,7 @@ const UserModal = () => {
 		toggleModal,
 	} = useContext(UsersContext)
 
-	const { name, location, email, phone, cell } = showUser
+	const { location, email, phone, cell } = showUser
 
 	return (
 		<div className='modal'>
@@ -37,9 +38,7 @@ const UserModal = () => {
 							alt='user-thumbnail'
 						/>
 						<div className='name-container'>
-							<p className='name name-large'>
-								{name.first} {name.last}
-							</p>
+							<p className='name name-large'>{getFullName(showUser.name)}</p>
 							<p className='username username-large'>
 								@{showUser.login.username}
 							</p>
@@ -50,9 +49,9 @@ const UserModal = () => {
 						<p className='data-title'>Location</p>
 					</div>
 
-					<p className='text'>{`${location.street.number}, ${location.street.name}`}</p>
-					<p className='text'>{`${location.city}, ${location.state}`}</p>
-					<p className='text'>{`${location.postcode}, ${location.country}`}</p>
+					<p className='text address'>{`${location.street.number}, ${location.street.name}`}</p>
+					<p className='text address'>{`${location.city}, ${location.state}`}</p>
+					<p className='text address'>{`${location.postcode}, ${location.country}`}</p>
 
 					<div className='basic-data-container contact-info'>
 						<IoInformationCircle color='#0099fe' size={20} />

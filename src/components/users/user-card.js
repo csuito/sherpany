@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import React, { useContext } from 'react'
 import { IoInformationCircle, IoMail } from 'react-icons/io5'
 import { Context as UsersContext } from '../../context/users'
+import { getFullName } from '../../util'
 import './user-card.css'
 
 const Card = ({ user }) => {
@@ -17,9 +18,7 @@ const Card = ({ user }) => {
 						alt='user-thumbnail'
 					/>
 					<div className='name-container'>
-						<p className='name'>
-							{user.name.first} {user.name.last}
-						</p>
+						<p className='name'>{getFullName(user.name)}</p>
 						<p className='username'>@{user.login.username}</p>
 					</div>
 				</div>

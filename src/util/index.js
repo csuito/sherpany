@@ -1,3 +1,4 @@
 import { checkArray } from './arrays'
+import { getFullName, normalize } from './strings'
 
-export { checkArray }
+export { checkArray, normalize, getFullName }

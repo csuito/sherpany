@@ -50,11 +50,15 @@
 }
 
 .text-margin {
-	margin-left: 0.25em;
+	margin-left: 0.5em;
 }
 
 .text {
 	color: var(--text-inactive-color);
+}
+
+.address {
+	margin-bottom: 0.75em;
 }
 
 .data-title {
