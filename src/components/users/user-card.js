@@ -3,37 +3,40 @@ import React, { useContext } from 'react'
 import { IoInformationCircle, IoMail } from 'react-icons/io5'
 import { Context as UsersContext } from '../../context/users'
 import { getFullName } from '../../util'
+import { ShowAnimated } from '../layout/animated'
 import './user-card.css'
 
 const Card = ({ user }) => {
 	const { toggleModal } = useContext(UsersContext)
 
 	return (
-		<div className='card-container'>
-			<div className='card-header'>
-				<div className='basic-data-container'>
-					<img
-						className='thumbnail'
-						src={user.picture.thumbnail}
-						alt='user-thumbnail'
-					/>
-					<div className='name-container'>
-						<p className='name'>{getFullName(user.name)}</p>
-						<p className='username'>@{user.login.username}</p>
+		<ShowAnimated>
+			<div className='card-container'>
+				<div className='card-header'>
+					<div className='basic-data-container'>
+						<img
+							className='thumbnail'
+							src={user.picture.thumbnail}
+							alt='user-thumbnail'
+						/>
+						<div className='name-container'>
+							<p className='name'>{getFullName(user.name)}</p>
+							<p className='username'>@{user.login.username}</p>
+						</div>
 					</div>
+					<IoInformationCircle
+						color='#0099fe'
+						size='22'
+						onClick={() => toggleModal(user)}
+						className='btn'
+					/>
 				</div>
-				<IoInformationCircle
-					color='#0099fe'
-					size='22'
-					onClick={() => toggleModal(user)}
-					className='btn'
-				/>
+				<div className='basic-data-container'>
+					<IoMail size='16' color='#a0a0a0' />
+					<p className='email'>{user.email}</p>
+				</div>
 			</div>
-			<div className='basic-data-container'>
-				<IoMail size='16' color='#a0a0a0' />
-				<p className='email'>{user.email}</p>
-			</div>
-		</div>
+		</ShowAnimated>
 	)
 }
 

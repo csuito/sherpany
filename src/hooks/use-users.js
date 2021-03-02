@@ -26,7 +26,7 @@ const useUsers = () => {
 	)
 
 	const fetchNextPage = async () => {
-		if (searching || showModal) return
+		if (searching || showModal || loading) return
 		try {
 			await refetch()
 		} catch (err) {
