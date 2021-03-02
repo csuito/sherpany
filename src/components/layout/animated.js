@@ -8,7 +8,7 @@ const ShowAnimated = ({ children, delay }) => {
 		const timeoutID = setTimeout(() => {
 			setVisible(true)
 		}, delay)
-		return () => timeoutID
+		return () => clearTimeout(timeoutID)
 	}, [delay])
 
 	return <div className={visible ? 'visible' : 'invisible'}>{children}</div>
