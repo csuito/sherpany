@@ -5,7 +5,7 @@ import { ShowAnimated } from './animated'
 describe('ShowAnimated', () => {
 	beforeEach(() => {})
 
-	it('renders correctly on home route', () => {
+	it('renders correctly', () => {
 		render(
 			<ShowAnimated>
 				<div className='text'>Text</div>
